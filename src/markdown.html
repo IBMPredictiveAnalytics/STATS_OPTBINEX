@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STATS OPTBINEX Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+
+
+
+
+</head>
+
+<body>
+<!-- rmarkdown v1 -->
+
+<h1>STATS OPTBINEX Extension Command</h1>
+
+<p>Bin predictor variables according to their effect on a target variable.</p>
+
+<p>STATS OPTBINEX<br/>
+TARGET = <em>variable name</em><sup>&#42;</sup><br/>
+BINVARS = <em>list of predictor variables</em><sup>&#42;</sup><br/>
+SUFFIX = <em>suffix for new variables</em><br/>
+OVERWRITE = YES or NO<sup>&#42;&#42;</sup>  </p>
+
+<p>/OPTIONS<br/>
+SYNTAXOUTFILE = <em>&ldquo;file specification&rdquo;</em><br/>
+EXECUTE = YES<sup>&#42;&#42;</sup> or NO<br/>
+TREETABLE = YES<sup>&#42;&#42;</sup> or NO<br/>
+RECODETABLE = YES<sup>&#42;&#42;</sup> or NO<br/>
+MINSIZE = <em>minimum size for a child node</em><br/>
+ALPHA = <em>significance level for splits</em><br/>
+CONTINTERVALS = <em>number of intervals for continuous variables</em>  </p>
+
+<p>/HELP.</p>
+
+<p><sup>&#42;Required</sup><br/>
+<sup>&#42;&#42;Default</sup></p>
+
+<p>/HELP displays this help and does nothing else.</p>
+
+<p>Example:</p>
+
+<pre><code>STATS OPTBINEX TARGET=jobtime BINVARS=jobcat gender SUFFIX=_bin OVERWRITE=YES
+/OPTIONS SYNTAXOUTFILE=&quot;c:\temp\bintest.sps&quot;.
+</code></pre>
+
+<p>This command recodes predictor variables based on whether there
+is a significantly different effect on a target variable for
+different values.  It uses the TREES CHAID algorithm with a
+one-level tree separately for each predictor.  The predictors
+are recoded so that values grouped in the same node, which do
+not have a significantly different effect on the target, are
+given the same value.  The resulting values are consecutive
+integers starting from zero.  Value labels are constructed
+from the tree results.</p>
+
+<p>This command requires the Decision Trees option, since it
+uses the Trees procedure.</p>
+
+<p><strong>TARGET</strong> specifies the variable to predict.
+It may have any measurement level.
+The CHAID algorithm takes the measurement
+level into account for both the target and the predictors.</p>
+
+<p><strong>BINVARS</strong> specifies the variables
+to be binned.  They may have any measurement level, which is taken into
+account by the algorithm.</p>
+
+<p>It is possible that CHAID will not find
+any splits for a variable.  In that case, no new variable will be
+created.  A warning is issued if that occurs.</p>
+
+<p><strong>SUFFIX</strong>. A new variable
+with tree-determined values is produced for each variable.  Its name
+is the input variable name with the specified suffix.  Use
+only characters that are legal in a variable name.  The default
+value is _bin.</p>
+
+<p><strong>OVERWRITE</strong> specifies whether to overwrite existing variables or not.
+If any new name
+matches an existing variable name, and overwrite is not YES, the command
+stops without creating any new variables.</p>
+
+<h2>OPTIONS</h2>
+
+<p><strong>SYNTAXOUTFILE</strong> specifies a file for saving the generated output
+syntax for future use without rerunning this command.  The
+syntax includes the COMPUTE,
+VARIABLE LABEL, and VALUE LABEL syntax.</p>
+
+<p><strong>EXECUTE</strong> specifies whether or not to execute the generated syntax.</p>
+
+<p><strong>TREETABLE</strong> specifies whether to display table of split values and statistics.</p>
+
+<p><strong>RECODETABLE</strong> specifies whether to display a table of value mappings
+for each variable.  This information is also available
+from the generated value labels.</p>
+
+<p><strong>MINSIZE</strong> specifies the smallest
+number of cases permitted in a child node.  The default is 10.</p>
+
+<p><strong>ALPHA</strong> specifies the desired significance level.</p>
+
+<p><strong>CONTINTERVALS</strong> specifies the number of intervals for continuous variables.
+The CHAID algorithm divides continuous variable values into a set of intervals
+for tree building.  The default is 10.</p>
+
+</body>
+
+</html>
+
