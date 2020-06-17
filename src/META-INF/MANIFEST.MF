@@ -2,7 +2,7 @@ Name: STATS OPTBINEX
 Dialog-Specs: STATS_OPTBINEX.spd
 Command-Specs: STATS_OPTBINEX.xml
 Code-Files: STATS_OPTBINEX.py
-Misc-Files: extsyntax.css,markdown.html,IBMdialogicon.png
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
 Summary: Construct optimal bins for categorical or continuous target
 Description: This command uses the TREE CHAID algorithm on a categoric
  al or continuous target to group categories or ranges of predictor va
@@ -15,8 +15,9 @@ Description: This command uses the TREE CHAID algorithm on a categoric
  The command requires the Decision Trees option, because it uses the T
  REE procedure.
 Author: JKP, IBM SPSS
-Version: 1.0.1
-Product-Version: 18
+Version: 2.0.0
+Product-Version: 24
 Date: 11/3/14
 Categories: data preparation
 Plugins: Python
+Python-Version: 3
