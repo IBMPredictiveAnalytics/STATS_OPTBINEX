@@ -15,9 +15,10 @@ Description: This command uses the TREE CHAID algorithm on a categoric
  The command requires the Decision Trees option, because it uses the T
  REE procedure.
 Author: JKP, IBM SPSS
-Version: 2.0.0
+Version: 2.0.1
 Product-Version: 24
 Date: 11/3/14
 Categories: data preparation
 Plugins: Python
 Python-Version: 3
+Translation-Catalogues: 
