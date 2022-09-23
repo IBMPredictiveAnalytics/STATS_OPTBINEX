@@ -12,10 +12,11 @@
 """STATS OUTPUT ATTRS extension command"""
 
 __author__ =  'JKP'
-__version__=  '1.0.0'
+__version__=  '1.0.1'
 
 # history
 # 25-oct-2014 original version
+# 22-sep-2022 fix Python 3 conversion error
 
 import spss, spssaux, SpssClient, tempfile, random, os
 from extension import Template, Syntax, processcmd
@@ -86,7 +87,7 @@ Please choose a shorter suffix or rename the input variables:\n%s""") % " ".join
         insertfile = os.path.join(tempdir, "F" + str(random.uniform(.1,1)))
     else:
         insertfile = syntaxoutfile
-    insertfilef = open(insertfile, "wb")
+    insertfilef = open(insertfile, "w")
     
     # run TREES for each independent variable and accumulate resulting tranformations
     
