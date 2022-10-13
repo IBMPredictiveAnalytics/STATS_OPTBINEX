@@ -1,4 +1,5 @@
 Name: STATS OPTBINEX
+Display-Name: Extended Optimal Binning
 Dialog-Specs: STATS_OPTBINEX.spd
 Command-Specs: STATS_OPTBINEX.xml
 Code-Files: STATS_OPTBINEX.py
